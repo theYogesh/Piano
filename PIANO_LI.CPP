@@ -206,20 +206,36 @@ void main()
 
 void startp()
 {
-    setbkcolor(15);
+    int i;
+    setbkcolor(7);
     getch();
-
-    int mradius;
-
-    mradius = getmaxy() / 10;
-
-    while( !kbhit() )
+    for (i = 1; !kbhit(); i++ )
     {
-        setcolor( random( 15 - 1 ) + 1 );
-        circle( random(getmaxx()), random(getmaxy()), random(mradius) );
+        cleardevice();
+        if(i<=510)
+        {
+            setfillstyle(1,15);
+            bar(i,0,getmaxx(),getmaxy()-i);
+        }
+        if(i<=350)
+        {
+            if(i%2==0)
+                setcolor(9);
+            else
+                setcolor(12);
+            settextstyle( 4, HORIZ_DIR, 18 );
+            outtextxy(80,-100+i, "Piano" );
+            setcolor(1);
+            settextstyle(2,0,7);
+            outtextxy(706-(i*2),425, "made by:" );
+            outtextxy(706-(i*2),450, "Yoge$h & $hivank" );
+            delay(10);
+        }
+        if(i>510)
+            break;
     }
-
-
+    setbkcolor(15);
+    delay(200);
     clrscr();
     cleardevice();
 
@@ -231,6 +247,15 @@ void startp()
 void pg1()
 {
 
+    setcolor(12);
+    settextstyle( 4, HORIZ_DIR, 18 );
+    outtextxy(79,250, "Piano" );
+    setcolor(4);
+    outtextxy(80,250, "Piano" );
+    setcolor(9);
+    settextstyle(2,0,7);
+    outtextxy(6,425, "made by:" );
+    outtextxy(6,450, "Yoge$h & $hivank" );
 
 }
 
@@ -978,8 +1003,13 @@ void m22()
 
         }
 
+        if(ch==3)
+        {
+            break;
+        }
 
-    } while(ch!=3);
+
+    } while(1);
 
 }
 
@@ -1127,7 +1157,6 @@ int s_name()
                 ref=r.ret_r();
                 del(ref);
             }
-
         }
     }
     iofile.close();
